@@ -1,0 +1,166 @@
+<!-- app.component.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Climotty</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            background-color: white;
+            text-align: center;
+        }
+
+        footer {
+            background-color: white;
+            padding: 40px;
+        }
+
+        .logo {
+            margin-right: 1000px;
+        }
+
+        .encabezado {
+            color: white;
+            font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+            font-size: 26px;
+            padding: 20px;
+        }
+
+        body {
+            background-color: white;
+            background-size: initial;
+            background-image: url("../assets/img/fondo1.jpeg");
+            background-position: center center;
+            /*respecto a body*/
+            background-repeat: no-repeat;
+            height: 100%;
+        }
+
+        main {     
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        .city-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            max-width: 1200px;
+        }
+
+        .city-list li {
+            margin: 20px;
+        }
+
+        .city-list li a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .city-list li a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .textBox {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: lightgray;
+            border-radius: 5px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<header>
+    <img class="logo" src="../assets/img/logo_climmoty.png" alt="">
+</header>
+
+<body>
+    <main>
+        <p class="encabezado">Consulte el clima de las principales ciudades</p>
+        <ul class="city-list">
+            <div class="button-container">
+                <li><a href="#" data-city="bogota" (click)="showTextBoxBogota = true">Bogotá</a></li>
+                <div *ngIf="showTextBoxBogota" class="textBox">
+                    <p>Clima en {{ cityBogota }}</p>
+                    <p>{{ weatherBogota?.main.temp }}°K</p>
+                    <p>La humedad es {{ humidityBogota.humidity }}%</p>
+
+                </div>
+            </div>
+            <div class="button-container">
+                <li><a href="#" data-city="washington" (click)="showTextBoxWashington = true">Washington</a></li>
+                <div *ngIf="showTextBoxWashington" class="textBox">
+                    <p>Clima en {{ cityWashington}}</p>
+                    <p>{{ weatherWashington?.main.temp }}°K</p>
+                    <p>La humedad es {{ humidityWashington.humidity }}%</p>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <li><a href="#" data-city="london" (click)="showTextBoxLondon = true">Londres</a></li>
+                <div *ngIf="showTextBoxLondon" class="textBox">
+                    <p>Clima en {{ cityLondon}}</p>
+                    <p>{{ weatherLondon?.main.temp }}°K</p>
+                    <p>La humedad es {{ humidityLondon.humidity }}%</p>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <li><a href="#" data-city="oslo" (click)="showTextBoxOslo = true">Oslo</a></li>
+                <div *ngIf="showTextBoxOslo" class="textBox">
+                    <p>Clima en {{ cityOslo}}</p>
+                    <p>{{ weatherOslo?.main.temp }}°K</p>
+                    <p>La humedad es {{ humidityOslo.humidity }}%</p>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <li><a href="#" data-city="cairo" (click)="showTextBoxCairo = true">El Cairo</a></li>
+                <div *ngIf="showTextBoxCairo" class="textBox">
+                    <p>Clima en {{ cityCairo}}</p>
+                    <p>{{ weatherCairo?.main.temp }}°K</p>
+                    <p>La humedad es {{ humidityCairo.humidity }}%</p>
+                </div>
+            </div>
+
+
+        </ul>
+    </main>
+</body>
+<footer>
+
+</footer>
+
+<router-outlet></router-outlet>
